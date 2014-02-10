@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Berita Tentang {{ topik|replace('-', ' ')|title }}{% endblock %}
+{% block metadesc %}
+<meta name="description" content="Berita tentang {{ topik|replace('-', ' ')|title }} dari hotoid.com">
+{% endblock %}
+{% block content %}
+  <div class="jumbotron">
+    <h1>what's <span style="color: red;">HOT O</span>n <span style="color: red;">I</span>n<span style="color: red;">D</span>onesia</h1>
+    <p class="lead">
+      Cari berita terhangat dari berbagai media terkemuka di Indonesia!
+    </p>
+    <div class="input-append">
+      <form method="GET" action="/get">
+	<input class="span4" id="appendedInputButton" type="text" name="q">
+	<button class="btn" type="submit"><i class="icon-search"></i></button>
+      </form>
+    </div><!-- input-append --><br>
+  </div><!-- jumbotron -->
+  <hr>
+  <div class="marketing row-fluid">
+    <div class="span12">
+      <!-- looping start -->
+
+      <div class="alert alert-dismissable alert-info">
+	<div class="media">
+	  <h2>Kompas</h2>
+	  {% for d in data1['responseData']['results'] %}
+	  <a class="pull-left">
+	    {% if d['richSnippet'] %}
+	    {% if d['richSnippet']['cseImage'] %}
+	    <img src="{{ d['richSnippet']['cseImage']['src'] }}" style="display: block; margin: 5px; width: 155px; height: 100px;">
+	    {% else %}
+	    <img src="/static/img/noimage.jpg" style="display: block; margin: 5px; width: 155px; height: 100px;">
+	    {% endif %}
+	    {% endif %}
+	  </a>
+	  <div class="media-body">
+	    <h3 class="hatiga">{{ d['title']|safe }}</h3>
+	    <p style="font-size: 12px;">{{ d['content']|safe }}</p>
+	    <a href="{{ d['url'] }}" target="_blank" rel="nofollow, noindex" class="btn btn-mini btn-info disabled">Berita Selengkapnya ..</a>
+	  </div><!-- media-body -->
+	  <hr>
+	  {% endfor %}
+	</div><!-- media -->
+      </div><!-- well -->
+
+      <!-- looping end -->
+
+    </div><!-- span12 -->
+
+  <hr>
+<!-- /container -->
+{% endblock %}

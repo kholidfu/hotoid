@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Mesin Pencari Berita {% endblock %}
+{% block metadesc %}
+<meta name="description" content="Situs pencari berita terkini dan terhangat dari berbagai media terkemuka di Indonesia">
+{% endblock %}
+{% block content %}
+  <div class="jumbotron">
+    <h1>what's <span style="color: red;">HOT O</span>n <span style="color: red;">I</span>n<span style="color: red;">D</span>onesia</h1>
+    <p class="lead">
+      Cari berita terhangat dari berbagai media terkemuka di Indonesia!
+    </p>
+    <div class="input-append">
+      <form method="GET" action="/get">
+	<input class="span4" id="appendedInputButton" type="text" name="q">
+	<button class="btn" type="submit"><i class="icon-search"></i></button>
+      </form>
+    </div><!-- input-append --><br>
+  </div><!-- jumbotron -->
+  <hr>
+  <div class="marketing row-fluid">
+    <div class="span12">
+      <div class="well">
+	<h3 style="color: green;">about us</h2>
+{#
+	{% for term in terms %}
+	  <a href="/berita/{{ term|slug }}" style="font-size: 12px;"><i># {{ term|lower }}</i></a>
+	{% endfor %}
+#}
+	  <p style="font-size: 12px;"><i>
+	    Kami merupakan situs pencari berita dari berbagai media terkemuka
+	    di Indonesia, di antaranya Kompas, Detik, Vivanews, Merdeka,
+	    Kaskus, dan mungkin ke depan akan semakin bertambah lagi.</i>
+	  </p>
+      </div><!-- well -->
+    </div>
+  </div>
+  <hr>
+<!-- /container -->
+{% endblock %}

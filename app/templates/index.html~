@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Mesin Pencari Berita {% endblock %}
+{% block metadesc %}
+<meta name="description" content="Situs pencari berita terkini dan terhangat dari berbagai media terkemuka di Indonesia">
+{% endblock %}
+{% block content %}
+  <div class="jumbotron">
+    <h1>what's <span style="color: red;">HOT O</span>n <span style="color: red;">I</span>n<span style="color: red;">D</span>onesia</h1>
+    <p class="lead">
+      Cari berita terhangat dari berbagai media terkemuka di Indonesia!
+    </p>
+    <div class="input-append">
+      <form method="GET" action="/get">
+	<input class="span4" id="appendedInputButton" type="text" name="q">
+	<button class="btn" type="submit"><i class="icon-search"></i></button>
+      </form>
+    </div><!-- input-append --><br>
+  </div><!-- jumbotron -->
+  <hr>
+  <div class="marketing row-fluid">
+    <div class="span12">
+      <h2 style="color: red;">hotoTAGS</h2>
+      <div class="well">
+	{% for term in terms %}
+	  <a href="/berita/{{ term|slug }}" style="font-size: 12px;"><i># {{ term|lower }}</i></a>
+	{% endfor %}
+      </div><!-- well -->
+    </div>
+  </div>
+  <hr>
+<!-- /container -->
+{% endblock %}

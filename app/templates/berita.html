@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block title %}Berita {% endblock %}
+{% block metadesc %}
+<meta name="description" content="index">
+{% endblock %}
+{% block content %}
+  <div class="jumbotron">
+    <h1>what's HOT On InDonesia</h1>
+    <p class="lead">
+      Cari berita terhangat dari berbagai media terkemuka di Indonesia!
+    </p>
+    <div class="input-append">
+      <form method="GET" action="/get">
+	<input class="span4" id="appendedInputButton" type="text" name="q">
+	<button class="btn" type="submit"><i class="icon-search"></i></button>
+      </form>
+    </div><!-- input-append --><br>
+  </div><!-- jumbotron -->
+  <hr>
+  <div class="marketing row-fluid">
+    <div class="span12">
+      <div class="well">
+	<h2>Kompas</h2>
+	{% for d in data1['responseData']['results'] %}
+	<h3 class="hatiga">{{ d['title']|safe }}</h3>
+	<p style="font-size: 12px;">{{ d['content']|safe }}</p>
+{#
+	{% if d['richSnippet'] %}
+	  {% if d['richSnippet']['cseImage'] %}
+	  <img src="{{ d['richSnippet']['cseImage']['src'] }}" width="200"><br />
+	  {% endif %}
+	{% endif %}
+#}
+	<a href="{{ d['url'] }}" target="_blank" rel="nofollow, noindex" class="btn btn-mini btn-info disabled">Berita Selengkapnya ..</a>
+	<hr>
+	{% endfor %}
+      </div><!-- well -->
+
+      <div class="well">
+	<h2>Detik</h2>
+	{% for d in data2['responseData']['results'] %}
+	<h3 class="hatiga">{{ d['title']|safe }}</h3>
+	<p style="font-size: 12px;">{{ d['content']|safe }}</p>
+{#
+	{% if d['richSnippet'] %}
+	  {% if d['richSnippet']['cseImage'] %}
+	  <img src="{{ d['richSnippet']['cseImage']['src'] }}" width="200"><br />
+	  {% endif %}
+	{% endif %}
+#}
+	<a href="{{ d['url'] }}" target="_blank" rel="nofollow, noindex" class="btn btn-mini btn-info disabled">Berita Selengkapnya ..</a>
+	<hr>
+	{% endfor %}
+      </div><!-- well -->
+      <div class="well">
+	<h2>VIVANews</h2>
+	{% for d in data3['responseData']['results'] %}
+	<h3 class="hatiga">{{ d['title']|safe }}</h3>
+	<p style="font-size: 12px;">{{ d['content']|safe }}</p>
+{#
+	{% if d['richSnippet'] %}
+	  {% if d['richSnippet']['cseImage'] %}
+	  <img src="{{ d['richSnippet']['cseImage']['src'] }}" width="200"><br />
+	  {% endif %}
+	{% endif %}
+#}
+	<a href="{{ d['url'] }}" target="_blank" rel="nofollow, noindex" class="btn btn-mini btn-info disabled">Berita Selengkapnya ..</a>
+	<hr>
+	{% endfor %}
+      </div><!-- well -->
+      <div class="well">
+	<h2>Kaskus</h2>
+	{% for d in data4['responseData']['results'] %}
+	<h3 class="hatiga">{{ d['title']|safe }}</h3>
+	<p style="font-size: 12px;">{{ d['content']|safe }}</p>
+{#
+	{% if d['richSnippet'] %}
+	  {% if d['richSnippet']['cseImage'] %}
+	  <img src="{{ d['richSnippet']['cseImage']['src'] }}" width="200"><br />
+	  {% endif %}
+	{% endif %}
+#}
+	<a href="{{ d['url'] }}" target="_blank" rel="nofollow, noindex" class="btn btn-mini btn-info disabled">Berita Selengkapnya ..</a>
+	<hr>
+	{% endfor %}
+      </div><!-- well -->
+      <div class="well">
+	<h2>Video</h2>
+	{% if data5['data']['totalItems'] > 0 %}
+	{% for d in data5['data']['items'] %}
+	<h3 class="hatiga">{{ d['title']|truncate(80) }}</h3>
+	<p style="font-size: 12px;">{{ d['description'] }}</p>
+	<a href="http://www.youtube.com/watch?v={{ d['id'] }}" target="_blank" rel="nofollow, noindex" class="btn btn-mini btn-info disabled">Berita Selengkapnya ..</a>
+	<hr>
+	{% endfor %}
+	{% endif %}
+      </div><!-- well -->
+
+    </div><!-- span12 -->
+
+  <hr>
+<!-- /container -->
+{% endblock %}

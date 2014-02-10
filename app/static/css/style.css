@@ -1,0 +1,22 @@
+.container {
+    max-width: 760px;
+}
+
+.row {
+    margin-left: 5px;
+}
+
+h2.hadua {
+    font-size: 13px;
+    line-height: 10px;
+}
+
+h3.hatiga {
+    font-size: 13px; 
+    font-weight: bold;
+    line-height: 20px;
+}
+
+hr {
+    margin: 8px 0;
+}
